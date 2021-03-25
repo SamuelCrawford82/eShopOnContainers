@@ -156,7 +156,7 @@ services:
       - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
       - OrchestratorType=${ORCHESTRATOR_TYPE}
     ports:
-      - "5107:80"
+      - "5107"
 
   payment-api:
     environment:

@@ -129,7 +129,7 @@ services:
       - spa=http://webspa/hc
       
     ports:
-      - "5107:80"
+      - "5107"
 
   payment-api:
     environment:
