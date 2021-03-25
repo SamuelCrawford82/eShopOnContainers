@@ -9,5 +9,6 @@ namespace Microsoft.eShopOnContainers.Services.Identity.API.Models
     public record ErrorViewModel
     {
         public ErrorMessage Error { get; set; }
+        public string RequestId { get; set; }
     }
 }

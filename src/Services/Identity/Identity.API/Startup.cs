@@ -1,26 +1,17 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using HealthChecks.UI.Client;
-using IdentityServer4.Services;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.DataProtection;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.eShopOnContainers.Services.Identity.API.Certificates;
-using Microsoft.eShopOnContainers.Services.Identity.API.Data;
-using Microsoft.eShopOnContainers.Services.Identity.API.Devspaces;
-using Microsoft.eShopOnContainers.Services.Identity.API.Models;
-using Microsoft.eShopOnContainers.Services.Identity.API.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using StackExchange.Redis;
 using System;
-using System.Reflection;
+using Microsoft.Identity.Web;
+using Microsoft.Identity.Web.UI;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace Microsoft.eShopOnContainers.Services.Identity.API
 {
@@ -108,11 +99,11 @@ namespace Microsoft.eShopOnContainers.Services.Identity.API
 
             // //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             // services.AddControllers();
-            // services.AddControllersWithViews();
-            // services.AddRazorPages();
+            //services.AddControllersWithViews();
+            //services.AddRazorPages();
 
             services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-                .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAd"));
+                    .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAd"));
 
             services.AddControllersWithViews(options =>
             {
@@ -121,8 +112,8 @@ namespace Microsoft.eShopOnContainers.Services.Identity.API
                     .Build();
                 options.Filters.Add(new AuthorizeFilter(policy));
             });
-           services.AddRazorPages()
-                .AddMicrosoftIdentityUI();
+            services.AddRazorPages()
+                 .AddMicrosoftIdentityUI();
 
             var container = new ContainerBuilder();
             container.Populate(services);

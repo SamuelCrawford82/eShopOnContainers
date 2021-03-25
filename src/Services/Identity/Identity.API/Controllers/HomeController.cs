@@ -1,20 +1,9 @@
-﻿
-using IdentityServer4.Services;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.eShopOnContainers.Services.Identity.API.Models;
-using Microsoft.eShopOnContainers.Services.Identity.API.Services;
-using Microsoft.Extensions.Options;
-using System.Threading.Tasks;
-
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WebApp_OpenIDConnect_DotNet.Models;
+//using Microsoft.eShopOnContainers.Services.Identity.API.Models;
 
 namespace Microsoft.eShopOnContainers.Services.Identity.API.Controllers
 {
